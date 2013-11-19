@@ -12,10 +12,10 @@ if [ $? == 0 ]; then
 else
 
     #wget http://apache.claz.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz -P $DOWNLOAD_DIR
-    wget http://apache.cs.utah.edu/hadoop/common/hadoop-2.0.5-alpha/hadoop-2.0.5-alpha-src.tar.gz -P $DOWNLOAD_DIR
+    wget http://apache.cs.utah.edu/hadoop/common/hadoop-2.0.5-alpha/hadoop-2.0.5-alpha.tar.gz -P $DOWNLOAD_DIR
     #tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
-    tar -xzf $DOWNLOAD_DIR/hadoop-2.0.5-alpha-src.tar.gz -C $DOWNLOAD_DIR
-    mv $DOWNLOAD_DIR/hadoop-2.0.5-alpha-src $HADOOP_DIR
+    tar -xzf $DOWNLOAD_DIR/hadoop-2.0.5-alpha.tar.gz -C $DOWNLOAD_DIR
+    mv $DOWNLOAD_DIR/hadoop-2.0.5-alpha $HADOOP_DIR
     if [ -z "$HADOOP_PREFIX" ]; then
         echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
         echo "export HADOOP_MAPRED_HOME=$HADOOP_DIR" | tee -a ~/.pam_environment
@@ -29,21 +29,21 @@ else
     source ~/.pam_environment
 
     #create directory for hadoop to store files
-    mkdir -p /home/$USER/data/hadoop/hdfs/nn 
-    mkdir -p /home/$USER/data/hadoop/hdfs/snn 
-    mkdir -p /home/$USER/data/hadoop/hdfs/dn 
+    mkdir -p /home/$USER/data/hadoop/hdfs/nn
+    mkdir -p /home/$USER/data/hadoop/hdfs/snn
+    mkdir -p /home/$USER/data/hadoop/hdfs/dn
 
     # copy configuration files for hadoop
-    cp $CONF_FILES_DIR/core-site.xml $HADOOP_CONF_DIR
-    cp $CONF_FILES_DIR/mapred-site.xml $HADOOP_CONF_DIR
-    cp $CONF_FILES_DIR/hdfs-site.xml $HADOOP_CONF_DIR
-    cp $CONF_FILES_DIR/yarn-site.xml $HADOOP_CONF_DIR
+    cp $CONF_FILES_DIR/core-site.xml $HADOOP_CONF_DIR/
+    cp $CONF_FILES_DIR/mapred-site.xml $HADOOP_CONF_DIR/
+    cp $CONF_FILES_DIR/hdfs-site.xml $HADOOP_CONF_DIR/
+    cp $CONF_FILES_DIR/yarn-site.xml $HADOOP_CONF_DIR/
 #    mv $HADOOP_DIR/conf/hadoop-env.sh.template $HADOOP_DIR/conf/hadoop-env.sh
     #set JAVA_HOME in hadoop config file
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a $HADOOP_CONF_DIR/hadoop-env.sh
     chmod -R 755 $HADOOP_DIR
     echo "export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin" | tee -a ~/.pam_environment
-    
+
     source ~/.pam_environment
     #hdfs namenode -format
 
