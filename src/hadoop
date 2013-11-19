@@ -11,10 +11,11 @@ if [ $? == 0 ]; then
     echo 'Hadoop was found'
 else
 
-    wget http://apache.claz.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz -P $DOWNLOAD_DIR
-    echo $USER
-    tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
-    mv $DOWNLOAD_DIR/hadoop-2.2.0 $HADOOP_DIR
+    #wget http://apache.claz.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz -P $DOWNLOAD_DIR
+    wget http://apache.cs.utah.edu/hadoop/common/hadoop-2.0.5-alpha/hadoop-2.0.5-alpha-src.tar.gz -P $DOWNLOAD_DIR
+    #tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
+    tar -xzf $DOWNLOAD_DIR/hadoop-2.0.5-alpha.tar.gz -C $DOWNLOAD_DIR
+    mv $DOWNLOAD_DIR/hadoop-2.0.5-alpha-src $HADOOP_DIR
     if [ -z "$HADOOP_PREFIX" ]; then
         echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
         echo "export HADOOP_MAPRED_HOME=$HADOOP_DIR" | tee -a ~/.pam_environment
