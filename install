@@ -1,0 +1,16 @@
+#!/bin/bash
+# create a dedicated account for hadoop
+sudo ./src/create_hduser
+
+# generate ssh key 
+# install java
+# create directories
+sudo su hduser -c ./src/bootstrap
+
+# install hadoop (2.2.0)
+# install scala (2.9.3)
+# install spark (0.80)
+sudo su hduser -c ./src/hadoop
+sudo su hduser -c ./src/scala
+sudo su hduser -c ./src/spark
+#sudo su hduser -c ./src/shark

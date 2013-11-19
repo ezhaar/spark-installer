@@ -1,0 +1,24 @@
+#!/bin/bash
+
+## HADOOP
+#
+pwd=$PWD
+source ~/.pam_environment
+
+
+## SCALA
+scalac -help 2>&1>/dev/null
+if [ $? == 0  ]; then
+    echo 'Scala was found'
+else
+    # download the src for hadoop, scala and spark
+    wget http://www.scala-lang.org/files/archive/scala-2.9.3.tgz -P $DOWNLOAD_DIR
+    #Extract hadoop and Scala
+    tar -zxf $DOWNLOAD_DIR/scala-2.9.3.tgz -C $DOWNLOAD_DIR
+    mv $DOWNLOAD_DIR/scala-2.9.3 $SCALA_DIR
+    chmod -R 755 $SCALA_DIR
+    echo "***** Now Copying Scala *****"
+    echo "export SCALA_HOME=~/SPARK/scala" | tee -a ~/.pam_environment
+    echo "export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin:$SCALA_DIR/bin" | tee -a ~/.pam_environment
+fi
+

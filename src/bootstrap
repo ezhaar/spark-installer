@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Generate ssh key
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+# add ssh key to authorized_keys
+cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
+
+# update
+sudo apt-get update > /dev/null
+sudo apt-get -y upgrade > /dev/null
+
+# Install java PreReq
+## JAVA
+command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \
+        installed. Installing java"; sudo apt-get install -y default-jdk;}
+# if java_home is not set
+if [ -z "$JAVA_HOME" ]; then
+    echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> ~/.pam_environment
+    source ~/.pam_environment
+fi
+
+# Create Directories
+
+DOWNLOAD_DIR=~/Downloads
+if [ ! -d $DOWNLOAD_DIR ]; then
+    mkdir $DOWNLOAD_DIR
+fi
+
+INSTALL_DIR=~/DataAnalysis
+if [ ! -d $INSTALL_DIR ]; then
+     mkdir $INSTALL_DIR
+fi
+
+
+HADOOP_DIR=$INSTALL_DIR/hadoop
+SCALA_DIR=$INSTALL_DIR/scala
+SPARK_DIR=$INSTALL_DIR/spark
+
+
+echo "export INSTALL_DIR=$INSTALL_DIR " | tee -a ~/.pam_environment
+echo "export DOWNLOAD_DIR=$DOWNLOAD_DIR " | tee -a ~/.pam_environment
+echo "export HADOOP_DIR=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
+echo "export SCALA_DIR=$INSTALL_DIR/scala" | tee -a ~/.pam_environment
+echo "export SPARK_DIR=$INSTALL_DIR/spark" | tee -a ~/.pam_environment
+
