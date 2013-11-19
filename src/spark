@@ -6,15 +6,16 @@ wget http://spark-project.org/download/spark-0.8.0-incubating.tgz -P $DOWNLOAD_D
 tar -xzf $DOWNLOAD_DIR/spark-0.8.0-incubating.tgz -C $DOWNLOAD_DIR
 mv $DOWNLOAD_DIR/spark-0.8.0-incubating $DOWNLOAD_DIR/spark-0.8.0
 # Now build Spark
-#cp -R $DOWNLOAD_DIR/spark-0.8.0 $SPARK_DIR
+cp -R $DOWNLOAD_DIR/spark-0.8.0 $SPARK_DIR
 
 mv $SPARK_DIR/conf/spark-env.sh.template $SPARK_DIR/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_DIR" | tee -a $SPARK_DIR/conf/spark-env.sh
+echo "export export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_DIR/conf/spark-env.sh
 
 #set hadoop version in spark build
 sed -i 's|1.0.4|2.2.0|' $SPARK_DIR/project/SparkBuild.scala
 
-#sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_DIR/project/SparkBuild.scala
+sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_DIR/project/SparkBuild.scala
 
 cd $SPARK_DIR
 #sbt/sbt assembly

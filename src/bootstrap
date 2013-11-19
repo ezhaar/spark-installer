@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate ssh key
-ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
 # add ssh key to authorized_keys
 cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
 

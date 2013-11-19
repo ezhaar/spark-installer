@@ -19,6 +19,6 @@ else
     chmod -R 755 $SCALA_DIR
     echo "***** Now Copying Scala *****"
     echo "export SCALA_HOME=~/SPARK/scala" | tee -a ~/.pam_environment
-    echo "export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin:$SCALA_DIR/bin" | tee -a ~/.pam_environment
+    echo "export PATH=$PATH:$SCALA_DIR/bin" | tee -a ~/.pam_environment
 fi
 
