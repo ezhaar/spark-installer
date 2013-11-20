@@ -13,11 +13,11 @@ Usage
 
 1. Copy this repo::
 
-  git clone git://github.com/ezhaar/spark-0.8.0
+   $ git clone git://github.com/ezhaar/spark-0.8.0
 
 2. Run the install script::
 
-   cd spark-0.8.0;./install
+   $ cd spark-0.8.0;./install
 
 3. Go grab a coffee.
 
@@ -39,48 +39,45 @@ Hadoop
 
 1. Format hadoop's namenode::
    
-   hdfs namenode -format
+   $ hdfs namenode -format
 
 2. Start HDFS processes::
    
-   hadoop-daemon.sh start namenode
-   hadoop-daemon.sh start datanode
+   $ hadoop-daemon.sh start namenode
+   $ hadoop-daemon.sh start datanode
 
 3. Start MapReduce Processes::
    
-   yarn-daemon.sh start resourcemanager
-   yarn-daemon.sh start nodemanager
-   mr-jobhistory-daemon.sh start historyserver
+   $ yarn-daemon.sh start resourcemanager
+   $ yarn-daemon.sh start nodemanager
+   $ mr-jobhistory-daemon.sh start historyserver
 
 4. Copy a directory to hdfs::
    
-   hadoop fs -copyFromLocal dir /dir
+   $ hadoop fs -copyFromLocal dir /dir
 
 5. Run a wordcount example on some file in dir::
    
-   hadoop fs \
-   $HADOOP_DIR/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar \
-   wordcount /in /out
+   $ hadoop fs $HADOOP_DIR/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar wordcount /in /out
 
-6. Check Outpu::
+6. Check Output::
    
-   hadoop fs -cat /out/*
+   $ hadoop fs -cat /out/*
 
 Spark
 -----
 
 1. Run the spark-pi example::
    SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.0-incubating-hadoop2.0.5-alpha.jar \
-    ./spark-class org.apache.spark.deploy.yarn.Client \
-      --jar examples/target/scala-2.9.3/spark-examples-assembly-0.8.0-incubating.jar \
-      --class org.apache.spark.examples.SparkPi \
-      --args yarn-standalone \
-      --num-workers 3 \
-      --master-memory 2g \
-      --worker-memory 1g \
-      --worker-cores 1
+   ./spark-class org.apache.spark.deploy.yarn.Client \
+   --jar examples/target/scala-2.9.3/spark-examples-assembly-0.8.0-incubating.jar \
+   --class org.apache.spark.examples.SparkPi \
+   --args yarn-standalone \
+   --num-workers 3 \
+   --master-memory 2g \
+   --worker-memory 1g \
+   --worker-cores 1
 
 2. Check the output::
    
-   cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout
-
+   $ cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout
