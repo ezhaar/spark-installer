@@ -4,7 +4,7 @@ Install Spark 0.8.0 with Hadoop
 
 Requirements
 ============
-1. User running the scripts should be in the sudoes list.
+1. User running the scripts should be in the sudoers list.
 2. Setup hostname and fqdn
 3. Make sure to review/update the config files
 
@@ -12,10 +12,12 @@ Usage
 =====
 
 1. Copy this repo::
-   git clone git://github.com/ezhaar/spark-0.8.0
+
+  ``git clone git://github.com/ezhaar/spark-0.8.0``
 
 2. Run the install script::
-   cd spark-0.8.0;./install
+
+   ``cd spark-0.8.0;./install``
 
 3. Go grab a coffee.
 
@@ -36,27 +38,27 @@ Hadoop
 ------
 
 1. Format hadoop's namenode::
-   hdfs namenode -format
+   ``hdfs namenode -format``
 
 2. Start HDFS processes::
-   hadoop-daemon.sh start namenode
-   hadoop-daemon.sh start datanode
+   ``hadoop-daemon.sh start namenode``
+   ``hadoop-daemon.sh start datanode``
 
 3. Start MapReduce Processes::
-   yarn-daemon.sh start resourcemanager
-   yarn-daemon.sh start nodemanager
-   mr-jobhistory-daemon.sh start historyserver
+   ``yarn-daemon.sh start resourcemanager``
+   ``yarn-daemon.sh start nodemanager``
+   ``mr-jobhistory-daemon.sh start historyserver``
 
 4. Copy a directory to hdfs::
-   hadoop fs -copyFromLocal dir /dir
+   ``hadoop fs -copyFromLocal dir /dir``
 
 5. Run a wordcount example on some file in dir::
-   hadoop fs \
+   ``hadoop fs \
    $HADOOP_DIR/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar \
-   wordcount /in /out
+   wordcount /in /out``
 
 6. Check Outpu::
-   hadoop fs -cat /out/*
+   ``hadoop fs -cat /out/*``
 
 Spark
 -----
@@ -73,5 +75,5 @@ Spark
       --worker-cores 1
 
 2. Check the output::
-   cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout
+   ``cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout``
 
