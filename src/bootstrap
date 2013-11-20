@@ -13,6 +13,7 @@ sudo apt-get -y upgrade > /dev/null
 ## JAVA
 command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \
         installed. Installing java"; sudo apt-get install -y openjdk-7-jdk;}
+sudo ln -s java-7-openjdk-amd64/ default-java
 # if java_home is not set
 if [ -z "$JAVA_HOME" ]; then
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> ~/.pam_environment

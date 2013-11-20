@@ -18,5 +18,7 @@ sed -i 's|1.0.4|2.2.0|' $SPARK_DIR/project/SparkBuild.scala
 sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_DIR/project/SparkBuild.scala
 
 cd $SPARK_DIR
-#sbt/sbt assembly
+SPARK_HADOOP_VERSION=2.0.5-alpha SPARK_YARN=true ./sbt/sbt assembly
+cp conf/log4j.properties.template conf/log4j.properties
+
 echo "*********** Spark Done ************"
