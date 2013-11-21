@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Generate ssh key
-ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
-# add ssh key to authorized_keys
-cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
-
 # update
 sudo apt-get update > /dev/null
 sudo apt-get -y upgrade > /dev/null

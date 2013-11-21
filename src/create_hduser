@@ -8,3 +8,10 @@ sudo useradd hduser -p hadoop -s /bin/bash -m -G hadoop
 sudo adduser hduser sudo
 echo 'hduser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/hduser
 sudo chmod 0440 /etc/sudoers.d/hduser
+
+# Generate ssh key
+ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
+# add ssh key to authorized_keys
+cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
+sudo cat ~ubuntu/.ssh/authorized_keys | tee -a ~/.ssh/authorized_keys
+

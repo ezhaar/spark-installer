@@ -34,8 +34,17 @@ What Happened?
 Post Install
 ============
 
+Switch to the newly created hduser and source the
+``/home/hduser/.pam_environment`` file::
+   
+   $ sudo su hduser;cd;. .pam_environment
+
 Hadoop
 ------
+
+0. Update the hostname in ``$HADOOP_DIR/conf/yarn-site.xml``::
+   
+   $ sed -i s/XX.XX.XX.XX/myHostname/g $HADOOP_DIR/conf/yarn-site.xml
 
 1. Format hadoop's namenode::
    
@@ -67,7 +76,10 @@ Hadoop
 Spark
 -----
 
-1. Run the spark-pi example::
+1. Run the spark-pi example
+
+.. code:: bash
+
    SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.0-incubating-hadoop2.0.5-alpha.jar \
    ./spark-class org.apache.spark.deploy.yarn.Client \
    --jar examples/target/scala-2.9.3/spark-examples-assembly-0.8.0-incubating.jar \
