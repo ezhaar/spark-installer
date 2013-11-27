@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Generate ssh key
+ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
+# add ssh key to authorized_keys
+sleep 1
+cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
+sleep 1
+sudo cat ~ubuntu/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
+
+
 # update
 sudo apt-get update > /dev/null
 sudo apt-get -y upgrade > /dev/null
@@ -8,7 +17,7 @@ sudo apt-get -y upgrade > /dev/null
 ## JAVA
 command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \
         installed. Installing java"; sudo apt-get install -y openjdk-7-jdk;}
-sudo ln -s java-7-openjdk-amd64/ default-java
+sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/default-java
 # if java_home is not set
 if [ -z "$JAVA_HOME" ]; then
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> ~/.pam_environment
