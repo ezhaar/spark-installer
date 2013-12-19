@@ -1,0 +1,19 @@
+!#/bin/bash
+
+source ~/.pam_environment
+
+HOSTNAME=$(hostname)
+IP=$(hostname -I)
+
+echo "$IP $HOSTNAME" | sudo tee -a /etc/hosts
+ssh-keyscan $HOSTNAME | sudo tee -a ~/.ssh/known_hosts
+
+sed -i "s/XXXX/$HOSTNAME/g" $HADOOP_CONF_DIR/core-site.xml
+sed -i "s/XXXX/$HOSTNAME/g" $HADOOP_CONF_DIR/yarn-site.xml
+
+hdfs namenode -format
+start-dfs.sh
+start-yarn.sh
+
+hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user/hduser

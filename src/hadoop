@@ -5,13 +5,12 @@
 CONF_FILES_DIR=./src/hadoop_conf
 source ~/.pam_environment
 echo $PATH
-sleep 5
 hadoop -h 2>&1>/dev/null
 if [ $? == 0 ]; then
     echo 'Hadoop was found'
 else
-
-    #wget http://apache.cs.utah.edu/hadoop/common/hadoop-2.0.5-alpha/hadoop-2.0.5-alpha.tar.gz -P $DOWNLOAD_DIR
+    wget http://apache.claz.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz
+    -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
     mv $DOWNLOAD_DIR/hadoop-2.2.0 $HADOOP_DIR
     if [ -z "$HADOOP_PREFIX" ]; then
@@ -36,14 +35,13 @@ else
     cp $CONF_FILES_DIR/mapred-site.xml $HADOOP_CONF_DIR/
     cp $CONF_FILES_DIR/hdfs-site.xml $HADOOP_CONF_DIR/
     cp $CONF_FILES_DIR/yarn-site.xml $HADOOP_CONF_DIR/
-#    mv $HADOOP_DIR/conf/hadoop-env.sh.template $HADOOP_DIR/conf/hadoop-env.sh
-    #set JAVA_HOME in hadoop config file
-    echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a $HADOOP_CONF_DIR/hadoop-env.sh
     chmod -R 755 $HADOOP_DIR
     echo "export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin" | tee -a ~/.pam_environment
+    echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a \
+    $HADOOP_CONF_DIR/yarn-env.sh
 
-    source ~/.pam_environment
-    #hdfs namenode -format
+    echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
 
     echo "***** HADOOP DONE! *****"
 
