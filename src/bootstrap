@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "$IP $HOSTNAME" | sudo tee -a /etc/hosts
-
 # Generate ssh key
 ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
+touch ~/.ssh/known_hosts
 sudo chown -R hduser:hduser ~/.ssh 
+sudo chown hduser:hduser ~/.ssh/known_hosts
 # add ssh key to authorized_keys for localhost login
 sleep 1
 cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
@@ -12,13 +12,13 @@ sleep 1
 sudo cat ~ubuntu/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
 
 # update
-sudo apt-get --quiet update
-sudo apt-get -y --quiet upgrade
+sudo apt-get -qq update
+sudo apt-get -y -qq upgrade
 
 # Install java PreReq
 ## JAVA
 command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \
-        installed. Installing java"; sudo apt-get install -y --quiet \
+        installed. Installing java"; sudo apt-get install -y -qq \
         default-jdk;}
 #sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/default-java
 # if java_home is not set

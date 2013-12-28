@@ -93,3 +93,17 @@ Spark
 2. Check the output::
    
    $ cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout
+
+
+
+check slaves file
+check hosts file on master
+check and set config_dir
+copy config_dir to all slaves
+check hosts file on all nodes
+start-dfs on master
+check status on master
+
+if slaves cannot contact master strange things will happen
+ - make sure slaves can resolve master
+ - make sure firewalls are down and ports are open
