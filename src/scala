@@ -18,7 +18,7 @@ else
     mv $DOWNLOAD_DIR/scala-2.9.3 $SCALA_DIR
     chmod -R 755 $SCALA_DIR
     echo "***** Now Copying Scala *****"
-    echo "export SCALA_HOME=~/SPARK/scala" | tee -a ~/.pam_environment
+    echo "export SCALA_HOME=$SCALA_DIR" | tee -a ~/.pam_environment
     echo "export PATH=$PATH:$SCALA_DIR/bin" | tee -a ~/.pam_environment
 fi
 
