@@ -12,7 +12,7 @@ else
     wget http://apache.claz.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz\
     -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
-    mv $DOWNLOAD_DIR/hadoop-2.2.0 $HADOOP_DIR
+    mv $DOWNLOAD_DIR/hadoop-2.2.0 $HADOOP_HOME
 #    if [ -z "$HADOOP_PREFIX" ]; then
 #        echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
 #        echo "export HADOOP_MAPRED_HOME=$HADOOP_DIR" | tee -a ~/.pam_environment
@@ -38,7 +38,7 @@ else
     cp $CONF_FILES_DIR/mapred-site.xml $HADOOP_CONF_DIR/
     cp $CONF_FILES_DIR/hdfs-site.xml $HADOOP_CONF_DIR/
     cp $CONF_FILES_DIR/yarn-site.xml $HADOOP_CONF_DIR/
-    chmod -R 755 $HADOOP_DIR
+    chmod -R 755 $HADOOP_HOME
     echo "export PATH=$PATH:$HADOOP_PREFIX/bin:$HADOOP_PREFIX/sbin" | tee -a ~/.pam_environment
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a \
     $HADOOP_CONF_DIR/yarn-env.sh
