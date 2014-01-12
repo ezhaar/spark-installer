@@ -23,7 +23,7 @@
  <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
  <value>org.apache.hadoop.mapred.ShuffleHandler</value>
  </property>
-
+ <!--
 <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
     <value>XXXX:8025</value>
@@ -44,4 +44,5 @@
     <name>yarn.nodemanager.localizer.address</name>
     <value>XXXX:8060</value>
   </property>
+-->
 </configuration>
