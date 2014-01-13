@@ -17,7 +17,7 @@ Usage
 
 2. Run the install script::
 
-   $ cd spark-0.8.0;./install
+   $ cd spark-0.8.1;./install
 
 3. Go grab a coffee.
 
@@ -34,17 +34,16 @@ What Happened?
 Post Install
 ============
 
-Switch to the newly created hduser and source the
-``/home/hduser/.pam_environment`` file::
+Switch to the newly created hduser and cd to home directory::
    
-   $ sudo su hduser;cd;. .pam_environment
+   $ sudo su hduser;cd 
 
 Hadoop
 ------
 
 0. Update the hostname in ``$HADOOP_DIR/conf/core-site.xml``::
    
-   $ sed -i s/XXXX/myHostname/g $HADOOP_DIR/conf/core-site.xml
+   $ sed -i s/XXXX/myHostname/g $HADOOP_CONF_DIR/core-site.xml
 
 1. Format hadoop's namenode::
    
