@@ -1,5 +1,5 @@
 ===============================
-Install Spark 0.8.0 with Hadoop
+Install Spark 0.8.1 with YARN 2.2.0
 ===============================
 
 Requirements
@@ -26,10 +26,10 @@ What Happened?
 
 1. Created a dedicated group and user for hadoop (hduser:hadoop)
 2. Installed Java-1.7 and set Java Path
-3. Downloaded, installed and configured hadoop-2.0.5-alpha in
+3. Downloaded, installed and configured hadoop-2.2.0 in
    ``/home/hduser/DataAnalaysis/hadoop`` and update PATH.
 4. Downloaded, installed and configured Scala-2.9.3.
-5. Downloaded, installed and configured Spark-0.8.0 with YARN.
+5. Downloaded, installed and configured Spark-0.8.1 with YARN.
 
 Post Install
 ============
@@ -42,9 +42,9 @@ Switch to the newly created hduser and source the
 Hadoop
 ------
 
-0. Update the hostname in ``$HADOOP_DIR/conf/yarn-site.xml``::
+0. Update the hostname in ``$HADOOP_DIR/conf/core-site.xml``::
    
-   $ sed -i s/XX.XX.XX.XX/myHostname/g $HADOOP_DIR/conf/yarn-site.xml
+   $ sed -i s/XXXX/myHostname/g $HADOOP_DIR/conf/core-site.xml
 
 1. Format hadoop's namenode::
    
@@ -52,26 +52,15 @@ Hadoop
 
 2. Start HDFS processes::
    
-   $ hadoop-daemon.sh start namenode
-   $ hadoop-daemon.sh start datanode
+   $ start-dfs.sh
 
-3. Start MapReduce Processes::
+3. Start Yarn Processes::
    
-   $ yarn-daemon.sh start resourcemanager
-   $ yarn-daemon.sh start nodemanager
-   $ mr-jobhistory-daemon.sh start historyserver
+   $ start-yarn.sh
 
-4. Copy a directory to hdfs::
+4. Create the initial directories::
    
-   $ hadoop fs -copyFromLocal dir /dir
-
-5. Run a wordcount example on some file in dir::
-   
-   $ hadoop fs $HADOOP_DIR/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar wordcount /in /out
-
-6. Check Output::
-   
-   $ hadoop fs -cat /out/*
+   $ hdfs dfs -mkdir /user;hdfs dfs -mkdir /user/hduser
 
 Spark
 -----
@@ -79,31 +68,12 @@ Spark
 1. Run the spark-pi example
 
 .. code:: bash
+    $ SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.1-incubating-hadoop2.2.0.jar
+    SPARK_YARN_APP_JAR=./examples/target/scala-2.9.3/spark-examples-assembly-0.8.1-incubating.jar \
+    ./run-example org.apache.spark.examples.SparkPi yarn-client
 
-   SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.0-incubating-hadoop2.0.5-alpha.jar \
-   ./spark-class org.apache.spark.deploy.yarn.Client \
-   --jar examples/target/scala-2.9.3/spark-examples-assembly-0.8.0-incubating.jar \
-   --class org.apache.spark.examples.SparkPi \
-   --args yarn-standalone \
-   --num-workers 3 \
-   --master-memory 2g \
-   --worker-memory 1g \
-   --worker-cores 1
-
-2. Check the output::
-   
-   $ cat $HADOOP_DIR/logs/userlogs/<application_id>/container*_000001/stdout
-
-
-
-check slaves file
-check hosts file on master
-check and set config_dir
-copy config_dir to all slaves
-check hosts file on all nodes
-start-dfs on master
-check status on master
-
+Common Errors
+-------------
 if slaves cannot contact master strange things will happen
  - make sure slaves can resolve master
  - make sure firewalls are down and ports are open
