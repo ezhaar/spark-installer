@@ -61,15 +61,26 @@ Hadoop
    
    $ hdfs dfs -mkdir /user;hdfs dfs -mkdir /user/hduser
 
+5. List hadooop examples::
+
+   ``$ hadoop jar \
+   $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar``
+
+6. Run Hadoopo pi example::
+   ``$ hadoop jari \
+   $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi \
+   -Dmapreduce.clientfactory.class.name=org.apache.hadoop.mapred.YarnClientFactory \
+   16 1000``
+
 Spark
 -----
 
 1. Run the spark-pi example
 
 .. code:: bash
-    $ SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.1-incubating-hadoop2.2.0.jar
+    ``SPARK_JAR=./assembly/target/scala-2.9.3/spark-assembly-0.8.1-incubating-hadoop2.2.0.jar
     SPARK_YARN_APP_JAR=./examples/target/scala-2.9.3/spark-examples-assembly-0.8.1-incubating.jar \
-    ./run-example org.apache.spark.examples.SparkPi yarn-client
+    ./run-example org.apache.spark.examples.SparkPi yarn-client``
 
 Common Errors
 -------------
