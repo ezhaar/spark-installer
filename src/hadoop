@@ -46,6 +46,22 @@ else
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
+    echo "export HADOOP_NAMENODE_USER=hduser" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
+
+    echo "export HADOOP_DATANODE_USER=hduser" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
+
+    echo "export HADOOP_SECONDARYNAMENODE_USER=hduser" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
+
+    echo "export HADOOP_JOBTRACKER_USER=hduser" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
+    
+    echo "export HADOOP_TASKTRACKER_USER=hduser" | tee -a \
+    $HADOOP_CONF_DIR/hadoop-env.sh
+
+
     echo "***** HADOOP DONE! *****"
 
 fi
