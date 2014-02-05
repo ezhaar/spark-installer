@@ -1,25 +1,22 @@
 #!/bin/bash
 
 source ~/.pam_environment
-spark="spark-0.8.1-incubating"
-wget http://d3kbcqa49mib13.cloudfront.net/spark-0.8.1-incubating.tgz -P \
+spark="spark-0.9.0-incubating"
+wget http://d3kbcqa49mib13.cloudfront.net/spark-0.9.0-incubating.tgz -P \
 $DOWNLOAD_DIR
-tar -xzf $DOWNLOAD_DIR/spark-0.8.1-incubating.tgz -C $DOWNLOAD_DIR
-# Now build Spark
-cp -R $DOWNLOAD_DIR/$spark $SPARK_HOME
+tar -xzf $DOWNLOAD_DIR/spark-0.9.0-incubating.tgz -C $SPARK_HOME
 
 mv $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_HOME" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "export SPARK_LOCAL_IP=10.20.20.10" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "export SPARK_MASTER_IP=10.20.20.10" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "export SPARK_MASTER_WEBUI_PORT=8888" | tee -a $SPARK_HOME/conf/spark-env.sh
 
 #set hadoop version in spark build
 sed -i 's|1.0.4|2.2.0|' $SPARK_HOME/project/SparkBuild.scala
 
 sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_HOME/project/SparkBuild.scala
-
-echo "export \
-SPARK_EXAMPLES_JAR=$SPARK_HOME/examples/target/scala-2.9.3/spark-examples-assembly-0.8.1-incubating.jar" \
-| tee -a ~/.pam_environment
 
 cd $SPARK_HOME
 SPARK_HADOOP_VERSION=2.2.0 SPARK_YARN=true ./sbt/sbt assembly
