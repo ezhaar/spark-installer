@@ -4,14 +4,15 @@ source ~/.pam_environment
 spark="spark-0.9.0-incubating"
 wget http://d3kbcqa49mib13.cloudfront.net/spark-0.9.0-incubating.tgz -P \
 $DOWNLOAD_DIR
-tar -xzf $DOWNLOAD_DIR/spark-0.9.0-incubating.tgz -C $SPARK_HOME
+tar -xzf $DOWNLOAD_DIR/spark-0.9.0-incubating.tgz -C $DOWNLOAD_DIR
+mv $DOWNLOAD_DIR/spark-0.9.0-incubating $SPARK_HOME
 
 mv $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_HOME" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_LOCAL_IP=10.20.20.10" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_MASTER_IP=10.20.20.10" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_MASTER_WEBUI_PORT=8888" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "#export SPARK_LOCAL_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "#export SPARK_MASTER_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "#export SPARK_MASTER_WEBUI_PORT=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
 
 #set hadoop version in spark build
 sed -i 's|1.0.4|2.2.0|' $SPARK_HOME/project/SparkBuild.scala

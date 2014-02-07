@@ -13,7 +13,8 @@ else
     # download the src for hadoop, scala and spark
     wget http://scala-lang.org/files/archive/scala-2.10.3.tgz -P $DOWNLOAD_DIR
     #Extract hadoop and Scala
-    tar -zxf $DOWNLOAD_DIR/scala-2.9.3.tgz -C $CALA_HOME
+    tar -zxf $DOWNLOAD_DIR/scala-2.9.3.tgz -C $DOWNLOAD_DIR
+    mv $DOWNLOAD_DIR/scala-2.10.3 $SCALA_HOME
     chmod -R 755 $SCALA_HOME
     echo "***** Now Copying Scala *****"
     echo "export PATH=$PATH:$SCALA_HOME/bin" | tee -a ~/.pam_environment
