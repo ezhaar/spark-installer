@@ -9,10 +9,10 @@ mv $DOWNLOAD_DIR/spark-0.9.0-incubating $SPARK_HOME
 
 mv $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_HOME" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "#export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "#export SPARK_LOCAL_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "#export SPARK_MASTER_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "#export SPARK_MASTER_WEBUI_PORT=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "#export SPARK_MASTER_WEBUI_PORT=YYYY" | tee -a $SPARK_HOME/conf/spark-env.sh
 
 #set hadoop version in spark build
 sed -i 's|1.0.4|2.2.0|' $SPARK_HOME/project/SparkBuild.scala
