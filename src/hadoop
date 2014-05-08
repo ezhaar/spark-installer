@@ -9,7 +9,7 @@ hadoop -h 2>&1>/dev/null
 if [ $? == 0 ]; then
     echo 'Hadoop was found'
 else
-    wget
+    wget \
     http://apache.cs.utah.edu/hadoop/common/hadoop-2.4.0/hadoop-2.4.0.tar.gz\
     -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.4.0.tar.gz -C $DOWNLOAD_DIR
