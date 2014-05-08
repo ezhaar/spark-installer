@@ -1,5 +1,5 @@
 ===================================
-Install Spark 0.9.0 with YARN 2.2.0
+Install Spark 0.9.1 with YARN 2.2.0
 ===================================
 
 Requirements
@@ -29,7 +29,7 @@ What Happened?
 3. Downloaded, installed and configured hadoop-2.2.0 in
    ``/home/hduser/DataAnalaysis/hadoop`` and update PATH.
 4. Downloaded, installed and configured Scala-2.10.3.
-5. Downloaded, installed and configured Spark-0.9.0 with YARN.
+5. Downloaded, installed and configured Spark-0.9.1 with YARN.
 
 Post Install
 ============
@@ -76,7 +76,7 @@ Spark
 
 1. Run the spark-pi example::
 
-    SPARK_JAR=./assembly/target/scala-2.10.3/spark-assembly-0.9.0-incubating-hadoop2.2.0.jar \
-    SPARK_YARN_APP_JAR=./examples/target/scala-2.10.3/spark-examples-assembly-0.9.0-incubating.jar \
+    SPARK_JAR=./assembly/target/scala-2.10.3/spark-assembly-0.9.1-hadoop2.2.0.jar \
+    SPARK_YARN_APP_JAR=./examples/target/scala-2.10.3/spark-examples-assembly-0.9.1.jar \
     ./run-example org.apache.spark.examples.SparkPi yarn-client
 
