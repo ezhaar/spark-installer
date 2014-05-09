@@ -76,7 +76,7 @@ Spark
 
 1. Run the spark-pi example::
 
-    SPARK_JAR=./assembly/target/scala-2.10.3/spark-assembly-0.9.1-hadoop2.2.0.jar \
-    SPARK_YARN_APP_JAR=./examples/target/scala-2.10.3/spark-examples-assembly-0.9.1.jar \
-    ./run-example org.apache.spark.examples.SparkPi yarn-client
+    SPARK_JAR=./assembly/target/scala-2.10/spark-assembly-0.9.1-hadoop2.2.0.jar \
+    SPARK_YARN_APP_JAR=./examples/target/scala-2.10/spark-examples-assembly-0.9.1.jar \
+    ./bin/run-example org.apache.spark.examples.SparkPi yarn-client
 
