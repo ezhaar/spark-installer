@@ -23,26 +23,70 @@
  <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
  <value>org.apache.hadoop.mapred.ShuffleHandler</value>
  </property>
- <!--
 <property>
     <name>yarn.resourcemanager.resource-tracker.address</name>
-    <value>XXXX:8025</value>
+    <value>host-10-20-20-28.novalocal:8025</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
-    <value>XXXX:8030</value>
+    <value>host-10-20-20-28.novalocal:8030</value>
   </property>
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>XXXX:8040</value>
+    <value>host-10-20-20-28.novalocal:8040</value>
   </property>
   <property>
     <name>yarn.nodemanager.address</name>
-    <value>XXXX:8050</value>
+    <value>host-10-20-20-28.novalocal:8050</value>
   </property>
     <property>
     <name>yarn.nodemanager.localizer.address</name>
-    <value>XXXX:8060</value>
+    <value>host-10-20-20-28.novalocal:8060</value>
   </property>
--->
+
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>2048</value>
+    <description>Minimum limit of memory to allocate to each container request at the Resource Manager.</description>
+  </property>
+  <property>
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>6144</value>
+    <description>Maximum limit of memory to allocate to each container request at the Resource Manager.</description>
+  </property>
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>6144</value>
+    <description>Physical memory, in MB, to be made available to running containers</description>
+  </property>
+
+
+
+  <property>
+    <name>yarn.scheduler.minimum-allocation-vcores</name>
+    <value>1</value>
+    <description>The minimum allocation for every container request at the RM, in terms of virtual CPU cores. Requests lower than this won't take effect, and the specified value will get allocated the minimum.</description>
+  </property>
+  <property>
+    <name>yarn.scheduler.maximum-allocation-vcores</name>
+    <value>2</value>
+    <description>The maximum allocation for every container request at the RM, in terms of virtual CPU cores. Requests higher than this won't take effect, and will get capped to this value.</description>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>4</value>
+    <description>Number of CPU cores that can be allocated for containers.</description>
+  </property>
+<property>
+<name>yarn.nodemanager.vmem-check.enabled</name>
+<value>false</value>
+  </property>
+<property>
+  <name>yarn.nodemanager.vmem-pmem-ratio</name>
+  <value>5</value>
+  <description>Ratio between virtual memory to physical memory when setting memory limits for containers. Container allocations are expressed in terms of physical memory, and virtual memory usage is allowed to exceed this allocation by this ratio.</description>
+</property>
 </configuration>
+
