@@ -32,4 +32,5 @@ export SCALA_HOME=/home/hduser/DataAnalysis/scala
 export SPARK_WORKER_INSTANCES=3
 #export SPARK_MEM=4000m
 #export SPARK_JAVA_OPTS="-Dspark.default.parallelism=2 -Xms1G -Xmx2G" 
-
+export SPARK_JAR=$SPARK_HOME/assembly/target/scala-2.10/spark-assembly-0.9.1-hadoop2.2.0.jar 
+export SPARK_YARN_APP_JAR=$SPARK_HOME/examples/target/scala-2.10/spark-examples-assembly-0.9.1.jar
