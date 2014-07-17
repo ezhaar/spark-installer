@@ -47,7 +47,7 @@ SPARK_DIR=$INSTALL_DIR/spark
 
 echo "export INSTALL_DIR=$INSTALL_DIR " | tee -a ~/.pam_environment
 echo "export DOWNLOAD_DIR=$DOWNLOAD_DIR " | tee -a ~/.pam_environment
-echo "export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m" " | tee -a ~/.pam_environment
+echo 'export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"' | tee -a ~/.pam_environment
 
 echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
 echo "export HADOOP_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
