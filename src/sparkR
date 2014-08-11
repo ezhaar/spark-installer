@@ -1,0 +1,8 @@
+echo "deb http://cran.rstudio.com/bin/linux/ubuntu precise/" | sudo tee /etc/apt/sources.list.d/cran.list
+apt-get update && sudo apt-get install r-base r-base-dev -y
+wget wget http://cran.cnr.berkeley.edu/src/contrib/rJava_0.9-6.tar.gz -P $DOWNLOAD_DIR
+tar -xzf rJava_0.9-6.tar.gz -C $INSTALL_DIR
+R CMD INSTALL $INSTALL_DIR/rJava
+git clone git://github.com/amplab-extras/SparkR-pkg.git $INSTALL_DIR/
+cd $INSTALL_DIR/SparkR-pkg
+USE_MAVEN=1 SPARK_HADOOP_VERSION=2.2.0 ./install-dev.sh
