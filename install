@@ -14,6 +14,6 @@ sudo su hduser -c ./src/hadoop
 # install scala (2.10.3)
 sudo su hduser -c ./src/scala
 
-# install spark (0.9.0)
+# install spark (1.0)
 sudo su hduser -c ./src/spark
 sudo su hduser -c ./src/sparkR
