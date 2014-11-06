@@ -1,17 +1,17 @@
 #!/bin/bash
 
 source ~/.pam_environment
-spark="spark-1.0.1"
-wget http://d3kbcqa49mib13.cloudfront.net/spark-1.0.1.tgz -P \
+spark="spark-1.1.0"
+wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0.tgz -P \
 $DOWNLOAD_DIR
-tar -xzf $DOWNLOAD_DIR/spark-1.0.1.tgz -C $DOWNLOAD_DIR
-mv $DOWNLOAD_DIR/spark-1.0.1 $SPARK_HOME
+tar -xzf $DOWNLOAD_DIR/spark-1.1.0.tgz -C $DOWNLOAD_DIR
+mv $DOWNLOAD_DIR/spark-1.1.0 $SPARK_HOME
 
 mv $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_HOME" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "export SPARK_WORKER_INSTANCES=3" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_JAR=$SPARK_HOME/assembly/target/scala-2.10/spark-assembly-1.0.1-hadoop2.2.0.jar" | tee -a $SPARK_HOME/conf/spark-env.sh
-echo "export SPARK_YARN_APP_JAR=$SPARK_HOME/examples/target/scala-2.10/spark-examples-1.0.1-hadoop2.2.0.jar" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "export SPARK_JAR=$SPARK_HOME/assembly/target/scala-2.10/spark-assembly-1.1.0-hadoop2.2.0.jar" | tee -a $SPARK_HOME/conf/spark-env.sh
+echo "export SPARK_YARN_APP_JAR=$SPARK_HOME/examples/target/scala-2.10/spark-examples-1.1.0-hadoop2.2.0.jar" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "#export SPARK_WORKER_MEMORY=2g" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "#export SPARK_LOCAL_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
 echo "#export SPARK_MASTER_IP=XXXX" | tee -a $SPARK_HOME/conf/spark-env.sh
