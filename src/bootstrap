@@ -19,8 +19,8 @@ sudo apt-get install -y python-dev fabric maven
 ## JAVA
 command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \
         installed. Installing java"; sudo apt-get install -y -qq \
-        default-jdk;}
-#sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/default-java
+        openjdk-7-jdk;}
+sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/default-java
 # if java_home is not set
 if [ -z "$JAVA_HOME" ]; then
     echo "export JAVA_HOME=/usr/lib/jvm/default-java" >> ~/.pam_environment
