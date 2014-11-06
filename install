@@ -16,4 +16,4 @@ sudo su hduser -c ./src/scala
 
 # install spark (1.0)
 sudo su hduser -c ./src/spark
-sudo su hduser -c ./src/sparkR
+#sudo su hduser -c ./src/sparkR
