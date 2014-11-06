@@ -10,7 +10,7 @@ if [ $? == 0 ]; then
     echo 'Hadoop was found'
 else
     wget \
-    http://apache.cs.utah.edu/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz\
+    https://archive.apache.org/dist/hadoop/core/hadoop-2.2.0/hadoop-2.2.0.tar.gz\
     -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.2.0.tar.gz -C $DOWNLOAD_DIR
     mv $DOWNLOAD_DIR/hadoop-2.2.0 $HADOOP_HOME
