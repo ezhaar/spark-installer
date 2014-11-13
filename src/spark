@@ -2,10 +2,11 @@
 
 source ~/.pam_environment
 spark="spark-1.1.0"
-wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0.tgz -P \
+#wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0.tgz -P \
+wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz -P
 $DOWNLOAD_DIR
-tar -xzf $DOWNLOAD_DIR/spark-1.1.0.tgz -C $DOWNLOAD_DIR
-mv $DOWNLOAD_DIR/spark-1.1.0 $SPARK_HOME
+tar -xzf $DOWNLOAD_DIR/spark-1.1.0-bin-hadoop2.4.tgz -C $DOWNLOAD_DIR
+mv $DOWNLOAD_DIR/spark-1.1.0-bin-hadoop2.4 $SPARK_HOME
 
 mv $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
 echo "export SCALA_HOME=$SCALA_HOME" | tee -a $SPARK_HOME/conf/spark-env.sh
@@ -19,13 +20,13 @@ echo "#export SPARK_MASTER_WEBUI_PORT=YYYY" | tee -a $SPARK_HOME/conf/spark-env.
 echo "export PYTHONPATH=$SPARK_HOME/python" | tee -a $SPARK_HOME/conf/spark-env.sh
 
 #set hadoop version in spark build
-sed -i 's|1.0.4|2.2.0|' $SPARK_HOME/project/SparkBuild.scala
+#sed -i 's|1.0.4|2.2.0|' $SPARK_HOME/project/SparkBuild.scala
 
-sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_HOME/project/SparkBuild.scala
+#sed -i 's|DEFAULT_YARN = false|DEFAULT_YARN = true|' $SPARK_HOME/project/SparkBuild.scala
 
 cd $SPARK_HOME
 #SPARK_HADOOP_VERSION=2.2.0 SPARK_YARN=true ./sbt/sbt assembly
-mvn -Pyarn -Phadoop-2.2 -Dhadoop.version=2.2.0 -DskipTests clean package
+#mvn -Pyarn -Phadoop-2.2 -Dhadoop.version=2.2.0 -DskipTests clean package
 cp conf/log4j.properties.template conf/log4j.properties
 cp $HADOOP_CONF_DIR/slaves $SPARK_HOME/conf/
 echo "*********** Spark Done ************"
