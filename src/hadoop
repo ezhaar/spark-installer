@@ -11,7 +11,7 @@ if [ $? == 0 ]; then
 else
 #    wget 
 #    https://archive.apache.org/dist/hadoop/core/hadoop-2.4.0/hadoop-2.4.0.tar.gz\
-    wget https://www.dropbox.com/s/4u3gkf5efpdx4op/hadoop-2.4.0.tar.gz?dl=0 -P $DOWNLOAD_DIR
+    wget https://www.dropbox.com/s/4u3gkf5efpdx4op/hadoop-2.4.0.tar.gz -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.4.0.tar.gz -C $DOWNLOAD_DIR
     mv $DOWNLOAD_DIR/hadoop-2.4.0 $HADOOP_HOME
 

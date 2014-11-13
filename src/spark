@@ -3,8 +3,7 @@
 source ~/.pam_environment
 spark="spark-1.1.0"
 #wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0.tgz -P \
-wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz -P
-$DOWNLOAD_DIR
+wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz -P $DOWNLOAD_DIR
 tar -xzf $DOWNLOAD_DIR/spark-1.1.0-bin-hadoop2.4.tgz -C $DOWNLOAD_DIR
 mv $DOWNLOAD_DIR/spark-1.1.0-bin-hadoop2.4 $SPARK_HOME
 
