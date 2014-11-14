@@ -2,7 +2,7 @@ INSTALL_DIR=/home/hduser/DataAnalysis/
 cd $INSTALL_DIR
 git clone git://github.com/NFLabs/zeppelin
 cd zeppelin
-mvn install -DskipTests -Dspark.version=1.1.0-Custom -Dhadoop.version=2.2.0
+mvn install -DskipTests -Dspark.version=1.1.0 -Dhadoop.version=2.4.0
 cp conf/zeppelin-env.sh.template conf/zeppelin-env.sh
 echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" >> conf/zeppelin-env.sh
 echo "export SPARK_HOME=/home/hduser/DataAnalysis/spark" >> conf/zeppelin-env.sh
