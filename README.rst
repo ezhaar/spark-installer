@@ -25,11 +25,11 @@ What Happened?
 ==============
 
 1. Created a dedicated group and user for hadoop (hduser:hadoop)
-2. Installed Java-default and set Java Path
-3. Downloaded, installed and configured hadoop-2.2.0 in
+2. Installed Jdk-1.7 and set Java Path
+3. Downloaded, installed and configured hadoop-2.4.0 in
    ``/home/hduser/DataAnalaysis/hadoop`` and update PATH.
 4. Downloaded, installed and configured Scala-2.10.3.
-5. Downloaded, installed and configured Spark-1.0.0 with YARN.
+5. Downloaded, installed and configured Spark-1.1.0 with YARN.
 
 Post Install
 ============
@@ -60,23 +60,4 @@ Hadoop
 4. Create the initial directories::
    
    $ hdfs dfs -mkdir /user;hdfs dfs -mkdir /user/hduser
-
-5. List hadooop examples::
-
-   $ hadoop jar \
-   $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar
-
-6. Run Hadoopo pi example::
-
-    hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi \
-    -Dmapreduce.clientfactory.class.name=org.apache.hadoop.mapred.YarnClientFactory 16 1000
-
-Spark
------
-
-1. Run the spark-pi example::
-
-    SPARK_JAR=./assembly/target/scala-2.10/spark-assembly-1.0.0-hadoop2.2.0.jar \
-    SPARK_YARN_APP_JAR=./examples/target/scala-2.10/spark-examples-assembly-1.0.0.jar \
-    ./bin/run-example org.apache.spark.examples.SparkPi yarn-client
 
