@@ -20,6 +20,7 @@
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes
 export SCALA_HOME=/home/hduser/DataAnalysis/scala
+export MASTER="spark://$HOSTNAME:7077"
 #export SPARK_WORKER_MEMORY=1g
 #export SPARK_WORKER_CORES=1
 #export SPARK_MEMORY=6g
