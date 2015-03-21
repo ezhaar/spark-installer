@@ -16,10 +16,7 @@ else
     mv $DOWNLOAD_DIR/hadoop-2.4.0 $HADOOP_HOME
 
     #create directory for hadoop to store files
-    mkdir -p /home/$USER/data/hadoop/hdfs/nn
-    mkdir -p /home/$USER/data/hadoop/hdfs/snn
-    mkdir -p /home/$USER/data/hadoop/hdfs/dn
-
+    mkdir -p /home/$USER/data
 
     CONF_FILES_DIR=./src/hadoop_conf
 
