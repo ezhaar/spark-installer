@@ -2,10 +2,8 @@
 
 
 # Create hadooop group and hduser
-sudo addgroup hadoop
-sudo useradd hduser -p hadoop -s /bin/bash -m -G hadoop
+sudo useradd hduser -p hadoop -s /bin/bash -m
 # give sudo permissions
-sudo adduser hduser sudo
 echo 'hduser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/hduser
 sudo chmod 0440 /etc/sudoers.d/hduser
 
