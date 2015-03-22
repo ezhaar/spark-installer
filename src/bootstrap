@@ -9,7 +9,7 @@ sudo chown hduser:hduser ~/.ssh/known_hosts
 sleep 1
 cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
 sleep 1
-sudo cat ~ubuntu/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
+sudo cat /home/$USER/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
 
 # update
 sudo yum install -y python-devel python-pip
