@@ -13,7 +13,6 @@ cp $CONF_FILES_DIR/spark-env.sh $SPARK_CONF_DIR/
 cd $SPARK_HOME
 cp conf/log4j.properties.template conf/log4j.properties
 cp $HADOOP_CONF_DIR/slaves $SPARK_HOME/conf/
-echo "export PATH=$PATH:$SPARK_HOME/bin" | tee -a ~/.pam_environment
-echo "export PATH=$PATH:$SPARK_HOME/sbin" | tee -a ~/.pam_environment
+echo "export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin" | tee -a ~/.pam_environment
 echo "*********** Spark Done ************"
 
