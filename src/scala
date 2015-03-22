@@ -4,6 +4,7 @@
 #
 pwd=$PWD
 source ~/.pam_environment
+export SCALA_HOME=/usr/local/scala
 
 ## SCALA
 scalac -help 2>&1>/dev/null
