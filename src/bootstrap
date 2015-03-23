@@ -13,9 +13,10 @@ sudo pip install fabric
 #sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/default-java
 # if java_home is not set
 if [ -z "$JAVA_HOME" ]; then
-    echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75.x86_64" >> ~/.pam_environment
+    echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75.x86_64/jre" >> ~/.pam_environment
     source ~/.pam_environment
 fi
+sudo yum install -y java-1.7.0-openjdk-devel.x86_64
 
 # Create Directories
 
@@ -38,12 +39,13 @@ echo 'export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=5
 
 echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
 echo "export HADOOP_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
+echo "export HADOOP_DATA_DIR=/home/$USER/data" | tee -a ~/.pam_environment
 echo "export YARN_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
 
 echo "export HADOOP_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_environment
-echo "export HADOOP_DATA_DIR=/home/$USER/data"
 echo "export YARN_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_environment
  
 echo "export SCALA_HOME=$INSTALL_DIR/scala" | tee -a ~/.pam_environment
 echo "export SPARK_HOME=$INSTALL_DIR/spark" | tee -a ~/.pam_environment
+echo "export SPARK_CONF_DIR=$INSTALL_DIR/spark/conf" | tee -a ~/.pam_environment
 echo "source ~/.pam_environment" | tee -a ~/.bashrc 

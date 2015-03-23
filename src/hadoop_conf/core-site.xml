@@ -25,7 +25,7 @@
  </property>
  <property>
  <name>hadoop.http.staticuser.user</name>
- <value>hduser</value>
+ <value>ec2-user</value>
  </property>
 </configuration>
 

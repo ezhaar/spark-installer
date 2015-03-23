@@ -19,13 +19,13 @@
 # - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes
-export SCALA_HOME=/home/hduser/DataAnalysis/scala
-export MASTER="spark://$HOSTNAME:7077"
+export SCALA_HOME=/usr/local/scala
+export MASTER="spark://XXXX:7077"
 #export SPARK_WORKER_MEMORY=1g
 #export SPARK_WORKER_CORES=1
 #export SPARK_MEMORY=6g
 #export SPARK_JAVA_OPTS
 #export SPARK_DAEMON_JAVA_OPTS=6g
 
-export SPARK_WORKER_INSTANCES=1
+#export SPARK_WORKER_INSTANCES=1
 #export SPARK_JAVA_OPTS="-Dspark.default.parallelism=2 -Xms1G -Xmx2G" 

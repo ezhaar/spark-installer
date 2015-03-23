@@ -23,18 +23,18 @@
  </property>
  <property>
  <name>dfs.namenode.name.dir</name>
- <value>file:/home/hduser/data/hadoop/hdfs/nn</value>
+ <value>file:/home/ec2-user/data/hadoop/hdfs/nn</value>
  </property>
  <property>
  <name>fs.checkpoint.dir</name>
- <value>file:/home/hduser/data/hadoop/hdfs/snn</value>
+ <value>file:/home/ec2-user/data/hadoop/hdfs/snn</value>
  </property>
  <property>
  <name>fs.checkpoint.edits.dir</name>
- <value>file:/home/hduser/data/hadoop/hdfs/snn</value>
+ <value>file:/home/ec2-user/data/hadoop/hdfs/snn</value>
  </property>
  <property>
  <name>dfs.datanode.data.dir</name>
- <value>file:/home/hduser/data/hadoop/hdfs/dn</value>
+ <value>file:/home/ec2-user/data/hadoop/hdfs/dn</value>
  </property>
 </configuration>
