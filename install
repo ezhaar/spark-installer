@@ -1,19 +1,19 @@
 #!/bin/bash
 # create a dedicated account for hadoop
-sudo ./src/create_hduser
+#sudo ./src/create_ec2-user
 
-# bootstrap as hduser
+# bootstrap as ec2-user
     # generate ssh key 
     # install java
     # create directories
-sudo su hduser -c ./src/bootstrap
+sudo su ec2-user -c ./src/bootstrap
 
 # install hadoop (2.2.0)
-sudo su hduser -c ./src/hadoop
+sudo su ec2-user -c ./src/hadoop
 
 # install scala (2.10.3)
-sudo su hduser -c ./src/scala
+sudo su ec2-user -c ./src/scala
 
 # install spark (1.0)
-sudo su hduser -c ./src/spark
-#sudo su hduser -c ./src/sparkR
+sudo su ec2-user -c ./src/spark
+#sudo su ec2-user -c ./src/sparkR

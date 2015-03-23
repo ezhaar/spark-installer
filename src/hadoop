@@ -5,7 +5,6 @@
 CONF_FILES_DIR=./src/hadoop_conf
 export HADOOP_HOME=/usr/local/hadoop
 source ~/.pam_environment
-echo $PATH
 hadoop -h 2>&1>/dev/null
 if [ $? == 0 ]; then
     echo 'Hadoop was found'
@@ -15,7 +14,7 @@ else
     wget https://www.dropbox.com/s/4u3gkf5efpdx4op/hadoop-2.4.0.tar.gz -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.4.0.tar.gz -C $DOWNLOAD_DIR
     sudo mv $DOWNLOAD_DIR/hadoop-2.4.0 $HADOOP_HOME
-    sudo chown -R hduser:hduser $HADOOP_HOME
+    sudo chown -R $USER $HADOOP_HOME
 
     #create directory for hadoop to store files
     mkdir -p /home/$USER/data
@@ -37,19 +36,19 @@ else
     echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_NAMENODE_USER=hduser" | tee -a \
+    echo "export HADOOP_NAMENODE_USER=$USER" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_DATANODE_USER=hduser" | tee -a \
+    echo "export HADOOP_DATANODE_USER=$USER" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_SECONDARYNAMENODE_USER=hduser" | tee -a \
+    echo "export HADOOP_SECONDARYNAMENODE_USER=$USER" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_JOBTRACKER_USER=hduser" | tee -a \
+    echo "export HADOOP_JOBTRACKER_USER=$USER" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
     
-    echo "export HADOOP_TASKTRACKER_USER=hduser" | tee -a \
+    echo "export HADOOP_TASKTRACKER_USER=$USER" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
 
