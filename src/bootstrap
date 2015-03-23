@@ -37,13 +37,13 @@ echo "export DOWNLOAD_DIR=$DOWNLOAD_DIR " | tee -a ~/.pam_environment
 echo 'export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"' | tee -a ~/.pam_environment
 
 echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
-echo "export HADOOP_HOME=$INSTALL_DIR/hadoop/" | tee -a ~/.pam_environment
-echo "export YARN_HOME=$INSTALL_DIR/hadoop/" | tee -a ~/.pam_environment
+echo "export HADOOP_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
+echo "export YARN_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
 
-echo "export HADOOP_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop/" | tee -a ~/.pam_environment
-echo "export HADOOP_DATA_DIR=/home/$USER/data/"
-echo "export YARN_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop/" | tee -a ~/.pam_environment
+echo "export HADOOP_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_environment
+echo "export HADOOP_DATA_DIR=/home/$USER/data"
+echo "export YARN_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_environment
  
-echo "export SCALA_HOME=$INSTALL_DIR/scala/" | tee -a ~/.pam_environment
-echo "export SPARK_HOME=$INSTALL_DIR/spark/" | tee -a ~/.pam_environment
+echo "export SCALA_HOME=$INSTALL_DIR/scala" | tee -a ~/.pam_environment
+echo "export SPARK_HOME=$INSTALL_DIR/spark" | tee -a ~/.pam_environment
 echo "source ~/.pam_environment" | tee -a ~/.bashrc 
