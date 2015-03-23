@@ -1,17 +1,8 @@
 #!/bin/bash
 
 # Generate ssh key
-ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
-touch ~/.ssh/known_hosts
-sudo chown -R hduser:hduser ~/.ssh 
-sudo chown hduser:hduser ~/.ssh/known_hosts
 # add ssh key to authorized_keys for localhost login
-sleep 1
-cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
-sleep 1
-sudo cat /home/$USER/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
 
-# update
 sudo yum install -y python-devel python-pip
 sudo pip install fabric
 # Install java PreReq
@@ -50,7 +41,7 @@ echo "export HADOOP_HOME=$INSTALL_DIR/hadoop/" | tee -a ~/.pam_environment
 echo "export YARN_HOME=$INSTALL_DIR/hadoop/" | tee -a ~/.pam_environment
 
 echo "export HADOOP_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop/" | tee -a ~/.pam_environment
-echo "export HADOOP_DATA_DIR=/home/hduser/data/"
+echo "export HADOOP_DATA_DIR=/home/$USER/data/"
 echo "export YARN_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop/" | tee -a ~/.pam_environment
  
 echo "export SCALA_HOME=$INSTALL_DIR/scala/" | tee -a ~/.pam_environment
