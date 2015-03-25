@@ -3,13 +3,9 @@
 # Generate ssh key
 ssh-keygen -q -t rsa -P '' -f ~/.ssh/id_rsa
 touch ~/.ssh/known_hosts
-sudo chown -R hduser:hduser ~/.ssh 
-sudo chown hduser:hduser ~/.ssh/known_hosts
+sudo chown -R ubuntu:ubuntu ~/.ssh 
+sudo chown ubuntu:ubuntu ~/.ssh/known_hosts
 # add ssh key to authorized_keys for localhost login
-sleep 1
-cat ~/.ssh/id_rsa.pub | tee ~/.ssh/authorized_keys
-sleep 1
-sudo cat ~ubuntu/.ssh/authorized_keys | tee -a /home/hduser/.ssh/authorized_keys
 
 # update
 sudo apt-get -qq update
@@ -35,19 +31,16 @@ if [ ! -d $DOWNLOAD_DIR ]; then
 fi
 
 INSTALL_DIR=/usr/local
-
-
 HADOOP_DIR=$INSTALL_DIR/hadoop
 SCALA_DIR=$INSTALL_DIR/scala
 SPARK_DIR=$INSTALL_DIR/spark
 
-
 echo "export INSTALL_DIR=$INSTALL_DIR " | tee -a ~/.pam_environment
 echo "export DOWNLOAD_DIR=$DOWNLOAD_DIR " | tee -a ~/.pam_environment
-echo 'export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"' | tee -a ~/.pam_environment
 
 echo "export HADOOP_PREFIX=$HADOOP_DIR" | tee -a ~/.pam_environment
 echo "export HADOOP_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
+echo "export HADOOP_DATA_DIR=/home/$USER/data" | tee -a ~/.pam_environment
 echo "export YARN_HOME=$INSTALL_DIR/hadoop" | tee -a ~/.pam_environment
 
 echo "export HADOOP_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_environment
@@ -55,4 +48,5 @@ echo "export YARN_CONF_DIR=$INSTALL_DIR/hadoop/etc/hadoop" | tee -a ~/.pam_envir
  
 echo "export SCALA_HOME=$INSTALL_DIR/scala" | tee -a ~/.pam_environment
 echo "export SPARK_HOME=$INSTALL_DIR/spark" | tee -a ~/.pam_environment
+echo "export SPARK_CONF_DIR=$INSTALL_DIR/spark/conf" | tee -a ~/.pam_environment
 echo "source ~/.pam_environment" | tee -a ~/.bashrc 

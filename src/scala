@@ -1,7 +1,5 @@
 #!/bin/bash
 
-## HADOOP
-#
 pwd=$PWD
 source ~/.pam_environment
 
@@ -15,7 +13,7 @@ else
     #Extract hadoop and Scala
     tar -zxf $DOWNLOAD_DIR/scala-2.10.4.tgz -C $DOWNLOAD_DIR
     sudo mv $DOWNLOAD_DIR/scala-2.10.4 $SCALA_HOME
-    sudo chown -R hduser:hduser $SCALA_HOME
+    sudo chown -R ubuntu:ubuntu $SCALA_HOME
     chmod -R 755 $SCALA_HOME
     echo "***** Now Copying Scala *****"
     echo "export PATH=$PATH:$SCALA_HOME/bin" | tee -a ~/.pam_environment

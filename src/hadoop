@@ -14,7 +14,7 @@ else
     wget https://www.dropbox.com/s/4u3gkf5efpdx4op/hadoop-2.4.0.tar.gz -P $DOWNLOAD_DIR
     tar -xzf $DOWNLOAD_DIR/hadoop-2.4.0.tar.gz -C $DOWNLOAD_DIR
     sudo mv $DOWNLOAD_DIR/hadoop-2.4.0 $HADOOP_HOME
-    sudo chown -R hduser:hduser $HADOOP_HOME
+    sudo chown -R ubuntu:ubuntu $HADOOP_HOME
 
     #create directory for hadoop to store files
     mkdir -p /home/$USER/data
@@ -36,19 +36,19 @@ else
     echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_NAMENODE_USER=hduser" | tee -a \
+    echo "export HADOOP_NAMENODE_USER=ubuntu" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_DATANODE_USER=hduser" | tee -a \
+    echo "export HADOOP_DATANODE_USER=ubuntu" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_SECONDARYNAMENODE_USER=hduser" | tee -a \
+    echo "export HADOOP_SECONDARYNAMENODE_USER=ubuntu" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
-    echo "export HADOOP_JOBTRACKER_USER=hduser" | tee -a \
+    echo "export HADOOP_JOBTRACKER_USER=ubuntu" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
     
-    echo "export HADOOP_TASKTRACKER_USER=hduser" | tee -a \
+    echo "export HADOOP_TASKTRACKER_USER=ubuntu" | tee -a \
     $HADOOP_CONF_DIR/hadoop-env.sh
 
 
