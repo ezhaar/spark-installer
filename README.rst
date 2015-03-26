@@ -1,5 +1,5 @@
 ===================================
-Install Spark 1.0.0 with YARN 2.2.0
+Install Spark 1.3.0 with YARN 2.2.0
 ===================================
 
 Requirements
@@ -29,7 +29,7 @@ What Happened?
 3. Downloaded, installed and configured hadoop-2.4.0 in
    ``/home/hduser/DataAnalaysis/hadoop`` and update PATH.
 4. Downloaded, installed and configured Scala-2.10.3.
-5. Downloaded, installed and configured Spark-1.1.0 with YARN.
+5. Downloaded, installed and configured Spark-1.1.3 with YARN.
 
 Post Install
 ============
