@@ -10,7 +10,7 @@ sudo chown ubuntu:ubuntu ~/.ssh/known_hosts
 # update
 sudo apt-get -qq update
 sudo apt-get -y -qq upgrade
-sudo apt-get install -y python-dev fabric maven
+sudo apt-get install -y python-pip python-dev fabric
 # Install java PreReq
 ## JAVA
 command -v javac>/dev/null 2>&1 || { echo >&2 "I require java but it's not \

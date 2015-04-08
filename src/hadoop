@@ -2,7 +2,7 @@
 
 ## HADOOP
 #
-CONF_FILES_DIR=./src/hadoop_conf
+CONF_FILES_DIR=./src/config_files
 source ~/.pam_environment
 echo $PATH
 hadoop -h 2>&1>/dev/null
@@ -19,7 +19,6 @@ else
     #create directory for hadoop to store files
     mkdir -p /home/$USER/data
 
-    CONF_FILES_DIR=./src/hadoop_conf
 
     # copy configuration files for hadoop
     cp $CONF_FILES_DIR/core-site.xml $HADOOP_CONF_DIR/
