@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CONF_FILES_DIR=./src/config_files
+CONF_FILES_DIR= /home/$USER/spark-installer/src/config_files
 export SPARK_CONF_DIR=/usr/local/spark/conf
 export SPARK_HOME=/usr/local/spark
 
