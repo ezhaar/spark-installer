@@ -3,9 +3,9 @@ c = get_config()
 c.IPKernelApp.pylab = 'inline'  # if you want plotting support always                                                              
                                                                                                                                    
                                                                                                                                    
-c.NotebookApp.keyfile = u'/home/ec2-user/nbserver.pem'                                                                             
-c.NotebookApp.certfile = u'/home/ec2-user/nbserver.pem'                                                                            
-PWDFILE="/home/ec2-user/.ipython/profile_nbserver/nbpasswd.txt"                                                                    
+c.NotebookApp.keyfile = u'/home/ubuntu/nbserver.pem'                                                                             
+c.NotebookApp.certfile = u'/home/ubuntu/nbserver.pem'                                                                            
+PWDFILE="/home/ubuntu/.ipython/profile_nbserver/nbpasswd.txt"                                                                    
 c.NotebookApp.password = open(PWDFILE).read().strip()                                                                              
                                                                                                                                    
 c.NotebookApp.ip = '*'                                                                                                             
