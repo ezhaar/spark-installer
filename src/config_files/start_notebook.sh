@@ -7,6 +7,7 @@ then
     -subj "/C=US/ST=Izhar/L=Stockholm/O=Dis/CN=www.example.com" \
     -keyout /home/ubuntu/nbserver.pem \
     -out /home/ubuntu/nbserver.pem
+    mkdir /home/ubuntu/notebooks
 fi
 
 PASSWD_FILE=/home/ubuntu/.ipython/profile_nbserver/nbpasswd.txt
