@@ -2,7 +2,7 @@
 
 ## HADOOP
 #
-CONF_FILES_DIR= /home/$USER/spark-installer/src/config_files
+CONF_FILES_DIR=./src/config_files
 source ~/.pam_environment
 echo $PATH
 hadoop -h 2>&1>/dev/null

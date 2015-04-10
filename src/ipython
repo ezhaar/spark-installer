@@ -1,0 +1,15 @@
+#!/bin/bash
+
+CONF_FILES_DIR=./src/config_files
+
+sudo apt-get install -y python-matplotlib
+sudo pip install pandas py4j ipython['all']
+
+ipython profile create nbserver
+
+cp $CONF_FILES_DIR/ipython_notebook_config.py ~/.ipython/profile_nbserver/
+cp $CONF_FILES_DIR/00-pyspark-setup.py ~/.ipython/profile_nbserver/startup/
+cp $CONF_FILES_DIR/start_notebook.sh ~/
+cp $CONF_FILES_DIR/fabfile.py ~/
+
+
