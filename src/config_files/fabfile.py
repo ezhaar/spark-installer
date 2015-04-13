@@ -48,7 +48,8 @@ def deploy_conf_files():
     put(HADOOP_CONF_DIR + "yarn-site.xml.slave", HADOOP_CONF_DIR +
         "yarn-site.xml")
     put(SPARK_CONF_DIR + "slaves", SPARK_CONF_DIR + "slaves")
-#    put(SPARK_CONF_DIR + "spark-defaults.conf", SPARK_CONF_DIR + "spark-defaults.conf")
+    put(SPARK_CONF_DIR + "spark-env.sh", SPARK_CONF_DIR + "spark-env.sh")
+    put(SPARK_CONF_DIR + "spark-defaults.conf", SPARK_CONF_DIR + "spark-defaults.conf")
 
 
 @task
@@ -58,6 +59,12 @@ def set_conf_files():
         local('sed -i "s/XXXX/$(hostname)/g" yarn-site.xml')
         local('sed -i "s/XXXX/$(hostname)/g" yarn-site.xml.slave')
         local('cp slaves /usr/local/spark/conf/')
+
+
+@task
+@roles('slave')
+def create_hdfs_dirs():
+    run('mkdir -p ' + HADOOP_DATA_DIR)
 
 
 @roles('slave')
