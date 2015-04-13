@@ -65,6 +65,7 @@ def set_conf_files():
 @roles('slave')
 def create_hdfs_dirs():
     run('mkdir -p ' + HADOOP_DATA_DIR)
+    local('mkdir -p ' + HADOOP_DATA_DIR)
 
 
 @roles('slave')
