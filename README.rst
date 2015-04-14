@@ -36,7 +36,7 @@ Post Install
 Make sure to update the slaves file in ``/user/local/hadoop/etc/hadoop/``
 Switch to the newly created hduser and cd to home directory::
    
-   $ sudo su hduser;cd 
+   $ cd; source ~/.bashrc 
    $ fab create_hdfs_dirs
    $ fab init_cluster
    $ /usr/local/spark/sbin/start-all.sh
