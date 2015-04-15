@@ -16,5 +16,5 @@ sudo su ubuntu -c ./src/scala
 
 # install spark (1.0)
 sudo su ubuntu -c ./src/spark
-#sudo su ubuntu -c ./src/ipython
+sudo su ubuntu -c ./src/ipython
 #sudo su ubuntu -c ./src/sparkR
