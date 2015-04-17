@@ -111,6 +111,7 @@ def start_hadoop():
 @task
 def reset_cluster():
     execute(stop_hadoop)
+    execute(reset_hdfs_dirs)
     execute(deploy_conf_files)
     execute(format_hdfs)
     execute(start_hadoop)
