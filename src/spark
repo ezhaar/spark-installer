@@ -15,7 +15,7 @@ cp $CONF_FILES_DIR/spark-defaults.conf $SPARK_CONF_DIR/
 cd $SPARK_CONF_DIR
 cp log4j.properties.template log4j.properties
 
-echo "MASTER=spark://$(hostname):7077" | tee -a ~/.pam_environment
+echo 'MASTER=spark://$(hostname):7077' | tee -a ~/.pam_environment
 echo "export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin" | tee -a ~/.pam_environment
 echo "*********** Spark Done ************"
 
