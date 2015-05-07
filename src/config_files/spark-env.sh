@@ -1,28 +1,50 @@
 #!/usr/bin/env bash
 
-# This file contains environment variables required to run Spark. Copy it as
-# spark-env.sh and edit that to configure Spark for your site.
-#
-# The following variables can be set in this file:
-# - SPARK_LOCAL_IP, to set the IP address Spark binds to on this node
-# - MESOS_NATIVE_LIBRARY, to point to your libmesos.so if you use Mesos
-# - SPARK_JAVA_OPTS, to set node-specific JVM options for Spark. Note that
-#   we recommend setting app-wide options in the application's driver program.
-#     Examples of node-specific options : -Dspark.local.dir, GC options
-#     Examples of app-wide options : -Dspark.serializer
-#
-# If using the standalone deploy mode, you can also set variables for it here:
-# - SPARK_MASTER_IP, to bind the master to a different IP address or hostname
-# - SPARK_MASTER_PORT / SPARK_MASTER_WEBUI_PORT, to use non-default ports
-# - SPARK_WORKER_CORES, to set the number of cores to use on this machine
-# - SPARK_WORKER_MEMORY, to set how much memory to use (e.g. 1000m, 2g)
-# - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT
-# - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
-# - SPARK_WORKER_DIR, to set the working directory of worker processes
-#export SPARK_WORKER_MEMORY=1g
-#export SPARK_WORKER_CORES=1
-#export SPARK_MEMORY=6g
-#export SPARK_JAVA_OPTS
-#export SPARK_DAEMON_JAVA_OPTS=6g
+### Settings for Large Machines ###
 
-#export SPARK_JAVA_OPTS="-Dspark.default.parallelism=2 -Xms1G -Xmx2G" 
+
+# number of worker instances to run on each worker (default = 1)
+# if this is set make sure to set SPARK_WORKER_CORES otherwise each worker instance will try to use all cores
+# export SPARK_WORKER_INSTANCES=2
+
+# Total amount of cores to allow spark applications to use on a worker (default: total - 1)
+# export SPARK_WORKER_CORES=4
+
+# Total amount of memory to allow spark applications to use on a worker (default total - 1)
+# export SPARK_WORKER_MEMORY=2048m
+
+#########################################
+
+
+### IMP Directories ###
+SEE SPARK-DEFAULTS.CONF
+
+#export SPARK_CONF_DIR="/usr/local/spark/conf"
+
+# Directory for Spark temporary files. It will be used by Spark Master, Spark Worker, Spark Shell and Spark applications.
+#export SPARK_TMP_DIR="/tmp/spark"
+
+# Directory where RDDs will be cached
+#export SPARK_RDD_DIR="/var/lib/spark/rdd"
+
+# The directory for storing master.log and worker.log files
+#export SPARK_LOG_DIR="/var/log/spark"
+
+# Directory to run applications in, which will include both logs and scratch space (default: /var/lib/spark/work).
+#export SPARK_WORKER_DIR="/var/lib/spark/work"
+
+# Temporary storage location (as of Spark 1.0)
+#export SPARK_LOCAL_DIRS="$SPARK_RDD_DIR"
+
+#export SPARK_PID_DIR="/var/lib/spark/pids"
+
+##########################################
+
+
+export SPARK_COMMON_OPTS="$SPARK_COMMON_OPTS -Dspark.kryoserializer.buffer.mb=32 "
+LOG4J="-Dlog4j.configuration=file://$SPARK_CONF_DIR/log4j.properties"
+export SPARK_MASTER_OPTS=" $LOG4J -Dspark.log.file=/var/log/spark/logs/master.log "
+export SPARK_WORKER_OPTS=" $LOG4J -Dspark.log.file=/var/log/spark/logs/worker.log "
+export SPARK_EXECUTOR_OPTS=" $LOG4J -Djava.io.tmpdir=/tmp/spark/executor "
+export SPARK_REPL_OPTS=" -Djava.io.tmpdir=/spark/repl/\$USER "
+export SPARK_APP_OPTS=" -Djava.io.tmpdir=/tmp/spark/app/\$USER "
