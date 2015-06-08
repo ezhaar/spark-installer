@@ -17,7 +17,7 @@
 
 
 ### IMP Directories ###
-SEE SPARK-DEFAULTS.CONF
+#SEE SPARK-DEFAULTS.CONF
 
 #export SPARK_CONF_DIR="/usr/local/spark/conf"
 
