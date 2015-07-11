@@ -5,9 +5,9 @@ export SPARK_CONF_DIR=/usr/local/spark/conf
 export SPARK_HOME=/usr/local/spark
 
 source ~/.pam_environment
-wget http://d3kbcqa49mib13.cloudfront.net/spark-1.3.1-bin-hadoop2.4.tgz -P $DOWNLOAD_DIR
-tar -xzf $DOWNLOAD_DIR/spark-1.3.1-bin-hadoop2.4.tgz -C $DOWNLOAD_DIR
-sudo mv $DOWNLOAD_DIR/spark-1.3.1-bin-hadoop2.4 $SPARK_HOME
+wget http://d3kbcqa49mib13.cloudfront.net/spark-1.4.0-bin-hadoop2.4.tgz -P $DOWNLOAD_DIR
+tar -xzf $DOWNLOAD_DIR/spark-1.4.0-bin-hadoop2.4.tgz -C $DOWNLOAD_DIR
+sudo mv $DOWNLOAD_DIR/spark-1.4.0-bin-hadoop2.4 $SPARK_HOME
 
 sudo chown -R ubuntu:ubuntu $SPARK_HOME
 
