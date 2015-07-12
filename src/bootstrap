@@ -6,6 +6,7 @@ touch ~/.ssh/known_hosts
 sudo chown -R ubuntu:ubuntu ~/.ssh 
 sudo chown ubuntu:ubuntu ~/.ssh/known_hosts
 # add ssh key to authorized_keys for localhost login
+cat ~/.ssh/id_rsa.pub | sudo tee -a ~/.ssh/authorized_keys
 
 # update
 sudo apt-get -qq update

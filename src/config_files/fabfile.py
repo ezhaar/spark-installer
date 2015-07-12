@@ -87,6 +87,14 @@ def format_hdfs():
     local('stop-dfs.sh')
 
 
+@task 
+def init_local():
+    execute(set_conf_files)
+    execute(format_hdfs)
+    execute(start_hadoop)
+    execute(start_spark)
+
+
 @task
 def init_cluster():
     execute(test_conn)
@@ -107,6 +115,13 @@ def start_hadoop():
     local('start-dfs.sh')
     local('start-yarn.sh')
 
+@task
+def start_spark():
+    local('/usr/local/spark/sbin/start-all.sh')
+
+@task
+def stop_spark():
+    local('/usr/local/spark/sbin/stop-all.sh')
 
 @task
 def reset_cluster():
