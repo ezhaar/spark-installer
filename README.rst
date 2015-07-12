@@ -38,7 +38,7 @@ Switch to the newly created hduser and cd to home directory::
    
    $ cd; source ~/.bashrc 
    $ fab create_hdfs_dirs
-   $ fab init_cluster
+   $ fab init_local
    $ /usr/local/spark/sbin/start-all.sh
    $ ./start_notebook.sh
 
