@@ -38,7 +38,11 @@ Switch to the newly created hduser and cd to home directory::
    
    $ cd; source ~/.bashrc 
    $ fab create_hdfs_dirs
+
+   # if running on single node
    $ fab init_local
    $ /usr/local/spark/sbin/start-all.sh
    $ ./start_notebook.sh
+
+Now you should be able to access the jupyter notebook on ``localhost:9999``
 
